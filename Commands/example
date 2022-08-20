@@ -1,0 +1,8 @@
+module.exports = {
+    "Name": "",
+    "Aliases": [],
+    "Description": "",
+    "Function": function(Discord, Client, message, args){
+        
+    }
+}

@@ -1,0 +1,2 @@
+# JoeyBot
+JoeyBot for Discord
