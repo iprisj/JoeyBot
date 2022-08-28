@@ -28,8 +28,10 @@ Client.on("ready", () => {
 
 Client.on("messageCreate", async (message) => {
     message.guild = message.guild || {id: 0}
-    if (message.channel.id == "1013231258807050260" & (!message.attachments[0]  || message.content !== "https://cdn.discordapp.com/attachments/1013231258807050260/1013231748764680202/when_you_post_a_meme_in_a_chat_but_remeber_that_thats_where_you_stole_it_from.png")){
-        await message.delete()
+    if (message.channel.id == "1013231258807050260" ){
+        if( message.attachments.first() || message.content !== "https://cdn.discordapp.com/attachments/1013231258807050260/1013231748764680202/when_you_post_a_meme_in_a_chat_but_remeber_that_thats_where_you_stole_it_from.png"){
+            await message.delete()
+        }
     }
     if (!Client.Ready || message.author.bot) return;
     if (message.content.indexOf(Client.Config.prefix) !== 0) return;
