@@ -14,6 +14,7 @@ module.exports = {
     "Aliases": ["gtf"],
     "Description": "",
     "Function": async function(Discord, Client, message, args){
+        if(message.channel.id !== "950077029204770936") return;
         var won = false
         var Flag = Object.keys(FlagsJSON)[Math.floor(Math.random() * Object.keys(FlagsJSON).length)];
         const Mess = await message.channel.send({embeds: [new Discord.MessageEmbed()
