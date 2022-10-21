@@ -12,7 +12,8 @@ function compareStringFlag(str, Flag){
 module.exports = {
     "Name": "guesstheflag",
     "Aliases": ["gtf"],
-    "Description": "",
+    "Description": "Try to guess a country flag",
+    "Usage": ["%s"],
     "Function": async function(Discord, Client, message, args){
         if(message.channel.id !== "950077029204770936") return;
         var won = false

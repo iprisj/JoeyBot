@@ -20,5 +20,6 @@ module.exports = {
             }
             message.react(`✅`)
         }
-    }
+    },
+    "Hidden": true
 }

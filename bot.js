@@ -1,20 +1,20 @@
 const fs = require("fs")
 const Discord = require('discord.js');
 const Client = new Discord.Client({intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.DIRECT_MESSAGES, Discord.Intents.FLAGS.GUILD_MESSAGES,  Discord.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS]});
-
 Client.Config = require("./config.json");
-Client.Ready = false;
 Client.Commands = new Discord.Collection();
 
-Client.Init = function(certain){
+Client.Init = function(c){
     Client.Ready = false;
-    if (!certain){
+    if (!c){
         fs.readdirSync("./Commands").filter(file => file.endsWith(".js")).forEach(file => {
             var Command = require(`./Commands/${file}`)
             Command.fileName = file
             Client.Commands.set(Command.Name, Command)
-            for (let i = 0; i < Command.Aliases.length; i++) {
-                Client.Commands.set(Command.Aliases[i], Command)
+            if(Command.Aliases){
+                for (let i = 0; i < Command.Aliases.length; i++) {
+                    Client.Commands.set(Command.Aliases[i], Command)
+                }
             }
         });
     }
@@ -27,7 +27,6 @@ Client.on("ready", () => {
 });
 
 Client.on("messageCreate", async (message) => {
-    message.guild = message.guild || {id: 0}
     if (!Client.Ready || message.author.bot) return;
     if (message.content.indexOf(Client.Config.prefix) !== 0) return;
     const args = message.content.slice(Client.Config.prefix.length).trim().split(/ +/g);

@@ -1,7 +1,7 @@
 module.exports = {
     "Name": "eval",
     "Aliases": [],
-    "Description": "Eval's the code",
+    "Description": "Eval code",
     "Function": function(Discord, Client, message, args){
         if (message.author.id == "937190649726378054"){
             message.react(`✅`)
@@ -14,5 +14,6 @@ module.exports = {
                 })
             }
         }
-    }
+    },
+    "Hidden": true
 }
